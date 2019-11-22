@@ -3,6 +3,9 @@ LOAD 0
 STACKW 0 
 
 In: READ x
+LOAD c 
+ADD 1 
+STORE c 
 LOAD x  
 ADD 1 
 BRZERO Out 
@@ -18,7 +21,17 @@ WRITE x
 WRITE y 
 STACKW 0   
 BR In 
-Singledigit: STACKR 0
+Singledigit: LOAD c
+SUB 1 
+BRZERO Firstsingle 
+MULT x 
+STORE y 
+WRITE x 
+WRITE y 
+STACKW 0  
+BR In
+Firstsingle: STACKR 0
+ADD 1 
 MULT x 
 STORE y 
 WRITE x 
@@ -28,4 +41,4 @@ BR In
 Out: STOP 
 x 0
 y 0
-  
+c 0   
