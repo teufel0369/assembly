@@ -9,8 +9,21 @@ STORE c
 LOAD x  
 ADD 1 
 BRZERO Out 
-BR Testsd   
-Testsd: LOAD x 
+BRNEG Testnegsingle 
+BR Testpossingle 
+Testnegsingle: LOAD x 
+MULT -1 
+DIV 10 
+SUB 1 
+BRNEG Singledigit 
+STACKR 0 
+ADD x 
+STORE y 
+WRITE x 
+WRITE y 
+STACKW 0 
+BR In  
+Testpossingle: LOAD x 
 DIV 10 
 SUB 1   
 BRNEG Singledigit
@@ -23,7 +36,8 @@ STACKW 0
 BR In 
 Singledigit: LOAD c
 SUB 1 
-BRZERO Firstsingle 
+BRZERO Firstsingle
+STACKR 0 
 MULT x 
 STORE y 
 WRITE x 
